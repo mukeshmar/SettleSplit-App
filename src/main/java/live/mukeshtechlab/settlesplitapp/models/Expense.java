@@ -1,6 +1,7 @@
 package live.mukeshtechlab.settlesplitapp.models;
 
 import jakarta.persistence.*;
+import live.mukeshtechlab.settlesplitapp.dtos.expenseDto.AddExpenseResponseDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,4 +21,15 @@ public class Expense extends BaseModel {
     private ExpenseType type;
     @OneToMany(mappedBy = "expense")
     private List<UserExpense> userExpenses;
+
+    public AddExpenseResponseDto toAddExpenseResponseDto(){
+        AddExpenseResponseDto addExpenseResponseDto = new AddExpenseResponseDto();
+        addExpenseResponseDto.setPaidByUserName(this.createdBy.getName());
+        addExpenseResponseDto.setAmount(this.amount);
+        addExpenseResponseDto.setDescription(this.description);
+        addExpenseResponseDto.setGroupName(this.group == null ? null : this.group.getName());
+        addExpenseResponseDto.setType(this.type);
+        return addExpenseResponseDto;
+    }
 }
+
