@@ -1,13 +1,12 @@
-package live.mukeshtechlab.settlesplitapp.models;
+package live.mukeshtechlab.settlesplitapp.dtos.userDto;
 
-import jakarta.persistence.Entity;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
-public class User extends BaseModel {
+public class RegisterUserRequestDto {
     private String name;
     private String phoneNumber;
     private String password;
